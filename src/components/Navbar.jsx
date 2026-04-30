@@ -5,17 +5,27 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { Avatar, Button } from "@heroui/react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  // console.log(userData?.data)
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
     { name: "My Profile", href: "/profile" },
   ];
+  const userData = authClient.useSession();
+  const user = userData.data?.user;
+  const userName = user?.name;
+  console.log(user);
 
+  const handleSignOut = async () => {
+    await authClient.signOut();
+  };
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl ">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
@@ -56,27 +66,45 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Auth */}
-        <div className="hidden items-center gap-3 md:flex">
-          <Link href="/login">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="rounded-full border border-white/20 px-5 py-2 text-sm font-medium text-white hover:bg-white/10"
-            >
-              Login
-            </motion.button>
-          </Link>
+        {!user && (
+          <div className="hidden items-center gap-3 md:flex">
+            <Link href="/login">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="rounded-full border border-white/20 px-5 py-2 text-sm font-medium text-white hover:bg-white/10"
+              >
+                Login
+              </motion.button>
+            </Link>
 
-          <Link href="/register">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="rounded-full bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600"
-            >
-              Register
-            </motion.button>
-          </Link>
-        </div>
+            <Link href="/register">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="rounded-full bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600"
+              >
+                Register
+              </motion.button>
+            </Link>
+          </div>
+        )}
+        {user && (
+          <div className="hidden md:flex gap-3 items-center">
+            <Avatar>
+              <Avatar.Image
+                alt="John Doe"
+                src={user?.image}
+                referrerPolicy="no-referrer"
+              />
+              <Avatar.Fallback>{userName[0]}</Avatar.Fallback>
+            </Avatar>
+
+            <Button onClick={handleSignOut} size="sm" variant="danger">
+              Signout
+            </Button>
+          </div>
+        )}
 
         {/* Mobile Menu Button */}
         <button
@@ -117,19 +145,34 @@ const Navbar = () => {
                 );
               })}
 
-              <div className="mt-3 grid grid-cols-2 gap-3">
-                <Link href="/login" onClick={() => setOpen(false)}>
-                  <button className="w-full rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white hover:bg-white/10">
-                    Login
-                  </button>
-                </Link>
+              {!user && (
+                <div className="mt-3 grid grid-cols-2 gap-3">
+                  <Link href="/login" onClick={() => setOpen(false)}>
+                    <button className="w-full rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white hover:bg-white/10">
+                      Login
+                    </button>
+                  </Link>
 
-                <Link href="/register" onClick={() => setOpen(false)}>
-                  <button className="w-full rounded-full bg-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600">
-                    Register
-                  </button>
-                </Link>
-              </div>
+                  <Link href="/register" onClick={() => setOpen(false)}>
+                    <button className="w-full rounded-full bg-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600">
+                      Register
+                    </button>
+                  </Link>
+                </div>
+              )}
+
+              {
+            user && <div className="flex gap-3 items-center">
+                <Avatar>
+        <Avatar.Image alt="John Doe" src={user?.image} 
+        referrerPolicy="no-referrer"
+        />
+        <Avatar.Fallback>{userName[0]}</Avatar.Fallback>
+      </Avatar>
+
+          <Button onClick={handleSignOut} size="sm" variant="danger">Signout</Button>
+            </div>
+          }
             </div>
           </motion.div>
         )}

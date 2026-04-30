@@ -7,8 +7,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-white/10 bg-black text-white ">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-4">
-        
-        {/* Brand */}
+
         <div>
           <h2 className="text-2xl font-bold">
             Skill<span className="text-blue-400">Sphere</span>
@@ -18,7 +17,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Contact Info */}
         <div>
           <h3 className="mb-4 text-lg font-semibold">Contact Info</h3>
 
@@ -35,7 +33,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Quick Links */}
+
         <div>
           <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
 
@@ -58,7 +56,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social Links */}
         <div>
           <h3 className="mb-4 text-lg font-semibold">Follow Us</h3>
 
@@ -87,7 +84,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom */}
       <div className="border-t border-white/10 px-5 py-5 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} SkillSphere. All rights reserved.
       </div>
