@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "title": "Complete Web Development Bootcamp",
+    "instructor": "John Doe",
+    "duration": "20 hours",
+    "rating": 4.8,
+    "level": "Beginner",
+    "description": "Learn full-stack web development from scratch.",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "category": "Development"
+  },
+  {
+    "id": 2,
+    "title": "UI/UX Design Masterclass",
+    "instructor": "Sarah Miller",
+    "duration": "15 hours",
+    "rating": 4.7,
+    "level": "Beginner",
+    "description": "Learn user interface and user experience design with real projects.",
+    "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
+    "category": "Design"
+  },
+  {
+    "id": 3,
+    "title": "Digital Marketing Strategy",
+    "instructor": "Michael Smith",
+    "duration": "12 hours",
+    "rating": 4.6,
+    "level": "Intermediate",
+    "description": "Master SEO, social media marketing, branding, and online growth.",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+    "category": "Marketing"
+  },
+  {
+    "id": 4,
+    "title": "Python Programming for Beginners",
+    "instructor": "Emily Johnson",
+    "duration": "18 hours",
+    "rating": 4.9,
+    "level": "Beginner",
+    "description": "Start coding with Python and build simple real-world applications.",
+    "image": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&auto=format&fit=crop",
+    "category": "Programming"
+  },
+  {
+    "id": 5,
+    "title": "Graphic Design with Canva",
+    "instructor": "David Wilson",
+    "duration": "10 hours",
+    "rating": 4.5,
+    "level": "Beginner",
+    "description": "Create professional social media posts, banners, and designs easily.",
+    "image": "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop",
+    "category": "Design"
+  },
+  {
+    "id": 6,
+    "title": "React JS Frontend Development",
+    "instructor": "Alex Carter",
+    "duration": "16 hours",
+    "rating": 4.8,
+    "level": "Intermediate",
+    "description": "Build modern frontend applications using React, components, and hooks.",
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+    "category": "Development"
+  }
+]
