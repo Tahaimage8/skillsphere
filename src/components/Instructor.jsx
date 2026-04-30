@@ -1,10 +1,11 @@
-import { Avatar } from "@heroui/react";
+import { Avatar, Card } from "@heroui/react";
 import { Star } from "lucide-react";
 
 const Instructor = ({ instructor }) => {
     // console.log(instructor.avatar)
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center text-white">
+    // group border rounded-xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20
+    <Card className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 text-white">
 <div className="flex justify-center">
       <Avatar>
         <Avatar.Image alt="John Doe" src={instructor.avatar} />
@@ -22,7 +23,7 @@ const Instructor = ({ instructor }) => {
         <Star size={16} />
         <span className="text-sm text-white">{instructor.rating}</span>
       </div>
-    </div>
+    </Card>
   );
 };
 

@@ -51,7 +51,7 @@ toast.error( "Register failed!"+" "+error.message );
 
 if(data){
     toast.success('Register successFull')
-    router.push('/')
+    router.push('/login')
 }
 
   };
@@ -84,9 +84,9 @@ await authClient.signIn.social({
           </TextField>
 
           <TextField isRequired name="image" type="text">
-            <Label className="text-gray-300">Image URL</Label>
+            <Label className="text-gray-300">Photo URL</Label>
             <Input
-              placeholder="https://example.com/photo.jpg"
+              placeholder="Photo URL"
               className="border-white/10 bg-black/40 text-white"
             />
             <FieldError />

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Star, Clock, BookOpen } from "lucide-react";
 import Link from "next/link";
+import NotFound from "@/app/not-found";
 
 const CourseDetails = async ({ params }) => {
   const res = await fetch(
@@ -11,6 +12,11 @@ const CourseDetails = async ({ params }) => {
   const { id } = await params;
   const data = courses.find((course) => course.id == id);
 
+  if (!data) {
+ 
+    NotFound();
+
+}
   return (
     <div className="min-h-screen  bg-black text-white px-5 py-10">
       <div className="mx-auto flex max-w-6xl">
