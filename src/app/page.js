@@ -27,7 +27,7 @@ export default async function Home() {
       instructors = await instruc.json();
     }
   } catch (error) {
-    toast.error("Data fetch failed:", error);
+    console.error("Data fetch failed:", error);
   }
 
   const topCourses = [...courses]
