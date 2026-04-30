@@ -7,7 +7,7 @@
     "rating": 4.8,
     "level": "Beginner",
     "description": "Learn full-stack web development from scratch.",
-    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "image": "https://images.unsplash.com/photo-1547658719-da2b51169166",
     "category": "Development"
   },
   {
@@ -18,7 +18,7 @@
     "rating": 4.7,
     "level": "Beginner",
     "description": "Learn user interface and user experience design with real projects.",
-    "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
+    "image": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e",
     "category": "Design"
   },
   {
@@ -29,7 +29,7 @@
     "rating": 4.6,
     "level": "Intermediate",
     "description": "Master SEO, social media marketing, branding, and online growth.",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+    "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7",
     "category": "Marketing"
   },
   {
@@ -40,7 +40,7 @@
     "rating": 4.9,
     "level": "Beginner",
     "description": "Start coding with Python and build simple real-world applications.",
-    "image": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&auto=format&fit=crop",
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
     "category": "Programming"
   },
   {
@@ -51,7 +51,7 @@
     "rating": 4.5,
     "level": "Beginner",
     "description": "Create professional social media posts, banners, and designs easily.",
-    "image": "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop",
+    "image": "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70",
     "category": "Design"
   },
   {
@@ -62,7 +62,7 @@
     "rating": 4.8,
     "level": "Intermediate",
     "description": "Build modern frontend applications using React, components, and hooks.",
-    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+    "image": "https://images.unsplash.com/photo-1593642532400-2682810df593",
     "category": "Development"
   }
 ]
