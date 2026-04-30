@@ -1,11 +1,13 @@
 "use client";
 
-import UpdateUserModal from "@/components/UpdateUserModal";
+
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Button, Card, Chip } from "@heroui/react";
 import { motion } from "motion/react";
 import { BookOpen, GraduationCap, UserCheck } from "lucide-react";
 import Link from "next/link";
+import UpdateUserModal from "@/components/UpdateUserModal";
+
 
 const ProfilePage = () => {
   const userData = authClient.useSession();
@@ -119,7 +121,7 @@ const ProfilePage = () => {
 
       
             <div className="mt-8">
-              <UpdateUserModal />
+              <UpdateUserModal/>
             </div>
           </div>
         </Card>
