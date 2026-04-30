@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "title": "Senior Web Developer",
+    "experience": "5+ years experience",
+    "students": "12,000+ students",
+    "courses": 8,
+    "rating": 4.8,
+    "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Miller",
+    "title": "UI/UX Designer",
+    "experience": "6+ years experience",
+    "students": "9,500+ students",
+    "courses": 6,
+    "rating": 4.7,
+    "avatar": "https://randomuser.me/api/portraits/women/44.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Michael Smith",
+    "title": "Digital Marketing Expert",
+    "experience": "7+ years experience",
+    "students": "15,000+ students",
+    "courses": 10,
+    "rating": 4.6,
+    "avatar": "https://randomuser.me/api/portraits/men/65.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Emily Johnson",
+    "title": "Python Instructor",
+    "experience": "4+ years experience",
+    "students": "8,000+ students",
+    "courses": 5,
+    "rating": 4.9,
+    "avatar": "https://randomuser.me/api/portraits/women/68.jpg"
+  }
+]

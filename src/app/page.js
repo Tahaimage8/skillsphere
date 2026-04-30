@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import CourseCard from "@/components/CourseCard";
+import LearningTip from "@/components/LearningTip";
 
 export default async function Home() {
   const res = await fetch("https://skillsphere-ibtesam.vercel.app/courses.json", {
@@ -27,6 +28,8 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      <LearningTip/>
 
 
     </div>

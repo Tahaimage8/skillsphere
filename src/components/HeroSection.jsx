@@ -7,7 +7,7 @@ import { BookOpen, PlayCircle, Star } from "lucide-react";
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden bg-black text-white">
-      {/* Background Glow */}
+
       <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-500/30 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl" />
 
