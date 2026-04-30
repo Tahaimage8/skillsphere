@@ -3,7 +3,7 @@ import React from 'react';
 const LearningTip = () => {
     return (
 
-<section className="mx-auto max-w-7xl px-5 pb-16">
+<section className="pb-16">
   <h2 className="mb-8 text-3xl font-bold text-white">
     📌 Learning Tips
   </h2>
