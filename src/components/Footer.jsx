@@ -5,7 +5,7 @@ import { FaFacebookF, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhoneAlt } from "r
 
 const Footer = () => {
   return (
-    <footer className="border-t border-white/10 bg-black text-white mt-5">
+    <footer className="border-t border-white/10 bg-black text-white ">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-4">
         
         {/* Brand */}
