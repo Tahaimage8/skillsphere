@@ -24,12 +24,12 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     await authClient.signOut();
+    setOpen(false);
   };
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-        {/* Logo */}
         <Link href="/" onClick={() => setOpen(false)}>
           <motion.h1
             whileHover={{ scale: 1.05 }}
@@ -39,7 +39,6 @@ const Navbar = () => {
           </motion.h1>
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => {
             const active = pathname === item.href;
@@ -55,7 +54,6 @@ const Navbar = () => {
                   {item.name}
                 </motion.span>
 
-                {/* Simple underline (no layoutId, no heavy animation) */}
                 {active && (
                   <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-blue-400" />
                 )}
@@ -64,9 +62,8 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Auth */}
         {!user ? (
-          <div className="hidden md:flex gap-3">
+          <div className="hidden gap-3 md:flex">
             <Link href="/login">
               <Button size="sm">Login</Button>
             </Link>
@@ -78,9 +75,9 @@ const Navbar = () => {
             </Link>
           </div>
         ) : (
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden items-center gap-3 md:flex">
             <Avatar>
-              <Avatar.Image src={user?.image} />
+              <Avatar.Image src={user?.image} referrerPolicy="no-referrer" />
               <Avatar.Fallback>{userName[0]}</Avatar.Fallback>
             </Avatar>
 
@@ -90,43 +87,48 @@ const Navbar = () => {
           </div>
         )}
 
-        {/* Mobile */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-white">
+        <button onClick={() => setOpen(!open)} className="text-white md:hidden">
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden border-t border-white/10 bg-black px-5 py-4">
+        <div className="border-t border-white/10 bg-black px-5 py-4 md:hidden">
           <div className="flex flex-col gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="text-gray-300"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = pathname === item.href;
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={active ? "text-blue-400" : "text-gray-300"}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
 
             {!user ? (
-              <div className="hidden md:flex gap-3">
-                <Link href="/login">
+              <div className="flex gap-3 pt-2">
+                <Link href="/login" onClick={() => setOpen(false)}>
                   <Button size="sm">Login</Button>
                 </Link>
 
-                <Link href="/register">
+                <Link href="/register" onClick={() => setOpen(false)}>
                   <Button size="sm" className="bg-blue-500 text-white">
                     Register
                   </Button>
                 </Link>
               </div>
             ) : (
-              <div className="hidden md:flex items-center gap-3">
+              <div className="flex items-center gap-3 pt-2">
                 <Avatar>
-                  <Avatar.Image src={user?.image} />
+                  <Avatar.Image
+                    src={user?.image}
+                    referrerPolicy="no-referrer"
+                  />
                   <Avatar.Fallback>{userName[0]}</Avatar.Fallback>
                 </Avatar>
 
