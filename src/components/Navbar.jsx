@@ -29,7 +29,6 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-
         {/* Logo */}
         <Link href="/" onClick={() => setOpen(false)}>
           <motion.h1
@@ -58,7 +57,7 @@ const Navbar = () => {
 
                 {/* Simple underline (no layoutId, no heavy animation) */}
                 {active && (
-                  <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-blue-400" />
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-blue-400" />
                 )}
               </Link>
             );
@@ -92,10 +91,7 @@ const Navbar = () => {
         )}
 
         {/* Mobile */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-white"
-        >
+        <button onClick={() => setOpen(!open)} className="md:hidden text-white">
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
@@ -116,12 +112,28 @@ const Navbar = () => {
             ))}
 
             {!user ? (
-              <>
-                <Link href="/login">Login</Link>
-                <Link href="/register">Register</Link>
-              </>
+              <div className="hidden md:flex gap-3">
+                <Link href="/login">
+                  <Button size="sm">Login</Button>
+                </Link>
+
+                <Link href="/register">
+                  <Button size="sm" className="bg-blue-500 text-white">
+                    Register
+                  </Button>
+                </Link>
+              </div>
             ) : (
-              <button onClick={handleSignOut}>Logout</button>
+              <div className="hidden md:flex items-center gap-3">
+                <Avatar>
+                  <Avatar.Image src={user?.image} />
+                  <Avatar.Fallback>{userName[0]}</Avatar.Fallback>
+                </Avatar>
+
+                <Button size="sm" onClick={handleSignOut}>
+                  Logout
+                </Button>
+              </div>
             )}
           </div>
         </div>
