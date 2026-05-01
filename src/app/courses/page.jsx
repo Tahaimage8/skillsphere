@@ -20,12 +20,6 @@ const CoursesPage = () => {
 
         <Search courses={courses} />
       </div>
-
-      <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-3">
-        {courses.map((course) => (
-          <CourseCard key={course.id} course={course} />
-        ))}
-      </div>
     </div>
   );
 };
