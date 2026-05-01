@@ -1,36 +1,32 @@
- # SkillSphere – Online Learning Platform
+# SkillSphere
 
-## Live Site
+SkillSphere is an online course browsing platform. I built this project to practice Next.js App Router, authentication, protected routes, dynamic pages, and responsive UI design.
+
+## Live URL
+
 https://skillsphere-ibtesam.vercel.app/
 
-## GitHub Repository
-https://github.com/Tahaimage8/skillsphere
-
 ## Project Purpose
-SkillSphere is a modern online learning platform where users can explore different skill-based courses such as web development, design, marketing, and more. Users can browse courses, view popular and trending courses, check course details, and manage their profile after authentication.
+
+The main purpose of this project is to create a simple learning platform where users can explore different skill-based courses. Users can see course lists, search courses, view course details, create an account, login, and manage their profile.
 
 ## Key Features
-- Responsive online learning platform
-- Persistent Navbar and Footer
-- Home page with hero section
-- Popular courses section
-- Trending courses section
-- Learning tips section
-- Top instructors section
+
+- Responsive website design
+- Home page with course sections
 - All courses page
-- Course details page
-- Protected route for private pages
-- User login and registration system
-- Google social login
-- User profile page
-- Update user name and image
 - Search courses by title
-- Toast notifications for success and error messages
-- Loader implementation
-- Not-found page implementation
-- Clean Next.js App Router structure
+- Dynamic course details page
+- User registration and login
+- Google login
+- Protected profile page
+- Update user name and image
+- Toast notifications
+- Loading and not-found page
+- Navbar and footer on all pages
 
 ## Tech Stack
+
 - Next.js
 - React
 - Tailwind CSS
@@ -43,6 +39,7 @@ SkillSphere is a modern online learning platform where users can explore differe
 - Lucide React
 
 ## NPM Packages Used
+
 - next
 - react
 - react-dom
@@ -56,21 +53,21 @@ SkillSphere is a modern online learning platform where users can explore differe
 - react-icons
 - lucide-react
 
-## Authentication
-This project uses BetterAuth for authentication. Users can register with name, email, photo URL, and password. Users can also login using email/password or Google social login.
-
-## Environment Variables
-The project uses environment variables to secure sensitive configuration keys such as authentication secret, database URL, Google client ID, and Google client secret.
-
 ## Main Routes
-- `/` – Home page
-- `/courses` – All courses page
-- `/courses/[id]` – Course details page
-- `/login` – Login page
-- `/signup` – Register page
-- `/profile` – My Profile page
+
+- `/` - Home page
+- `/courses` - All courses page
+- `/courses/[id]` - Course details page
+- `/login` - Login page
+- `/register` - Register page
+- `/profile` - User profile page
+
+## Authentication
+
+This project uses BetterAuth for user authentication. Users can create an account using email and password. Google login is also added for social authentication.
 
 ## Deployment
-The application is deployed on Vercel.
 
-Live URL: https://skillsphere-ibtesam.vercel.app/
+This project is deployed on Vercel.
+
+Live Site: https://skillsphere-ibtesam.vercel.app/

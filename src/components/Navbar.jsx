@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Button } from "@heroui/react";
@@ -15,162 +15,117 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
-    { name: "My Profile", href: "/profile" },
+    { name: "Profile", href: "/profile" },
   ];
+
   const userData = authClient.useSession();
   const user = userData.data?.user;
-  const userName = user?.name;
+  const userName = user?.name || "U";
 
   const handleSignOut = async () => {
     await authClient.signOut();
   };
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl ">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
 
+        {/* Logo */}
         <Link href="/" onClick={() => setOpen(false)}>
           <motion.h1
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold tracking-wide text-white"
+            className="text-xl font-bold text-white"
           >
             Skill<span className="text-blue-400">Sphere</span>
           </motion.h1>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        {/* Desktop Menu */}
+        <div className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => {
             const active = pathname === item.href;
 
             return (
               <Link key={item.href} href={item.href} className="relative">
-                <span
-                  className={`text-sm font-medium transition ${
-                    active ? "text-blue-400" : "text-gray-300 hover:text-white"
+                <motion.span
+                  whileHover={{ scale: 1.05 }}
+                  className={`text-sm ${
+                    active ? "text-blue-400" : "text-gray-300"
                   }`}
                 >
                   {item.name}
-                </span>
+                </motion.span>
 
+                {/* Simple underline (no layoutId, no heavy animation) */}
                 {active && (
-                  <motion.div
-                    layoutId="active-line"
-                    className="absolute -bottom-2 left-0 h-0.5 w-full rounded-full bg-blue-400"
-                  />
+                  <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-blue-400" />
                 )}
               </Link>
             );
           })}
         </div>
 
-        {!user && (
-          <div className="hidden items-center gap-3 md:flex">
+        {/* Auth */}
+        {!user ? (
+          <div className="hidden md:flex gap-3">
             <Link href="/login">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="rounded-full border border-white/20 px-5 py-2 text-sm font-medium text-white hover:bg-white/10"
-              >
-                Login
-              </motion.button>
+              <Button size="sm">Login</Button>
             </Link>
 
             <Link href="/register">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="rounded-full bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600"
-              >
+              <Button size="sm" className="bg-blue-500 text-white">
                 Register
-              </motion.button>
+              </Button>
             </Link>
           </div>
-        )}
-        {user && (
-          <div className="hidden md:flex gap-3 items-center">
+        ) : (
+          <div className="hidden md:flex items-center gap-3">
             <Avatar>
-              <Avatar.Image
-                alt="John Doe"
-                src={user?.image}
-                referrerPolicy="no-referrer"
-              />
+              <Avatar.Image src={user?.image} />
               <Avatar.Fallback>{userName[0]}</Avatar.Fallback>
             </Avatar>
 
-            <Button onClick={handleSignOut} size="sm" variant="danger">
-              Signout
+            <Button size="sm" onClick={handleSignOut}>
+              Logout
             </Button>
           </div>
         )}
 
+        {/* Mobile */}
         <button
           onClick={() => setOpen(!open)}
-          className="rounded-lg border border-white/10 p-2 text-white md:hidden"
+          className="md:hidden text-white"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden border-t border-white/10 bg-black/90 px-5 py-5 backdrop-blur-xl"
-          >
-            <div className="flex flex-col gap-4">
-              {navItems.map((item) => {
-                const active = pathname === item.href;
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden border-t border-white/10 bg-black px-5 py-4">
+          <div className="flex flex-col gap-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="text-gray-300"
+              >
+                {item.name}
+              </Link>
+            ))}
 
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={`rounded-xl px-4 py-3 text-sm font-medium transition ${
-                      active
-                        ? "bg-blue-500/15 text-blue-400"
-                        : "text-gray-300 hover:bg-white/10 hover:text-white"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              })}
-
-              {!user && (
-                <div className="mt-3 grid grid-cols-2 gap-3">
-                  <Link href="/login" onClick={() => setOpen(false)}>
-                    <button className="w-full rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white hover:bg-white/10">
-                      Login
-                    </button>
-                  </Link>
-
-                  <Link href="/register" onClick={() => setOpen(false)}>
-                    <button className="w-full rounded-full bg-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600">
-                      Register
-                    </button>
-                  </Link>
-                </div>
-              )}
-
-              {
-            user && <div className="flex gap-3 items-center">
-                <Avatar>
-        <Avatar.Image alt="John Doe" src={user?.image} 
-        referrerPolicy="no-referrer"
-        />
-        <Avatar.Fallback>{userName[0]}</Avatar.Fallback>
-      </Avatar>
-
-          <Button onClick={handleSignOut} size="sm" variant="danger">Signout</Button>
-            </div>
-          }
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {!user ? (
+              <>
+                <Link href="/login">Login</Link>
+                <Link href="/register">Register</Link>
+              </>
+            ) : (
+              <button onClick={handleSignOut}>Logout</button>
+            )}
+          </div>
+        </div>
+      )}
     </header>
   );
 };
