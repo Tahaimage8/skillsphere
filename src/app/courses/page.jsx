@@ -13,7 +13,7 @@ const CoursesPage = () => {
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-10">
-      <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="mb-8 flex gap-4 flex-row items-center md:justify-between">
         <h2 className="text-3xl font-bold text-white">
           All Courses<span className="text-blue-400">.</span>
         </h2>
