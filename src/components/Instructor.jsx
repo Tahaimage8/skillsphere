@@ -2,7 +2,6 @@ import { Avatar, Card } from "@heroui/react";
 import { Star } from "lucide-react";
 
 const Instructor = ({ instructor }) => {
-    // console.log(instructor.avatar)
   return (
     // group border rounded-xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20
     <Card className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 text-white">

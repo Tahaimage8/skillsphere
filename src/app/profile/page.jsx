@@ -13,10 +13,9 @@ const ProfilePage = () => {
   const userData = authClient.useSession();
   const user = userData.data?.user;
 
-  const userName = user?.name || "Student";
-  const userEmail = user?.email || "No email found";
-  const userImage = user?.image || "";
-  const fallbackLetter = userName?.charAt(0)?.toUpperCase() || "S";
+  const userName = user?.name ;
+  const userEmail = user?.email ;
+  const userImage = user?.image ;
 
   if (userData.isPending) {
     return (

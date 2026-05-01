@@ -19,11 +19,7 @@ import { GrGoogle } from "react-icons/gr";
 import { toast } from "react-toastify";
 
 const Register = () => {
-
-    const router =useRouter();
-
-
-
+  const router = useRouter();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,8 +28,6 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log({ name, image, email, password });
-
     const { data, error } = await authClient.signUp.email({
       name,
       email,
@@ -41,26 +35,21 @@ const Register = () => {
       image,
     });
 
-    console.log({data,error})
+    if (error) {
+      toast.error("Register failed!" + " " + error.message);
+    }
 
-
-     if(error){
-toast.error( "Register failed!"+" "+error.message );
-
-};
-
-if(data){
-    toast.success('Register successFull')
-    router.push('/login')
-}
-
+    if (data) {
+      toast.success("Register successFull");
+      router.push("/login");
+    }
   };
 
-    const handleGoogleSignIn = async() =>{
-await authClient.signIn.social({
-    provider:"google"
-})
-  }
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-black px-4 py-12 text-white">
@@ -165,23 +154,21 @@ await authClient.signIn.social({
           </Link>
         </p>
 
+        <p className="mt-6 text-center text-sm text-gray-400">Or</p>
 
-        
-                <p className="mt-6 text-center text-sm text-gray-400">Or</p>
-        
-                <div className="mt-6">
-                  <Button
-                  onClick={handleGoogleSignIn}
-                    type="button"
-                    className="group w-full flex items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white backdrop-blur-xl shadow-lg shadow-black/20 transition-all duration-300 hover:scale-[1.03] hover:border-pink-500/40 hover:bg-white/10 active:scale-[0.98]"
-                  >
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
-                      <GrGoogle className="text-black text-sm" />
-                    </div>
-        
-                    <span className="tracking-wide">Continue with Google</span>
-                  </Button>
-                </div>
+        <div className="mt-6">
+          <Button
+            onClick={handleGoogleSignIn}
+            type="button"
+            className="group w-full flex items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white backdrop-blur-xl shadow-lg shadow-black/20 transition-all duration-300 hover:scale-[1.03] hover:border-pink-500/40 hover:bg-white/10 active:scale-[0.98]"
+          >
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
+              <GrGoogle className="text-black text-sm" />
+            </div>
+
+            <span className="tracking-wide">Continue with Google</span>
+          </Button>
+        </div>
       </Card>
     </div>
   );

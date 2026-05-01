@@ -12,7 +12,6 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  // console.log(userData?.data)
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
@@ -21,7 +20,6 @@ const Navbar = () => {
   const userData = authClient.useSession();
   const user = userData.data?.user;
   const userName = user?.name;
-  console.log(user);
 
   const handleSignOut = async () => {
     await authClient.signOut();
@@ -29,7 +27,7 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl ">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-        {/* Logo */}
+
         <Link href="/" onClick={() => setOpen(false)}>
           <motion.h1
             whileHover={{ scale: 1.05 }}
@@ -39,7 +37,6 @@ const Navbar = () => {
           </motion.h1>
         </Link>
 
-        {/* Desktop Links */}
         <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => {
             const active = pathname === item.href;
@@ -65,7 +62,6 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Desktop Auth */}
         {!user && (
           <div className="hidden items-center gap-3 md:flex">
             <Link href="/login">
@@ -106,7 +102,6 @@ const Navbar = () => {
           </div>
         )}
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(!open)}
           className="rounded-lg border border-white/10 p-2 text-white md:hidden"
@@ -115,7 +110,6 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div

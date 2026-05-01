@@ -33,15 +33,14 @@ const LoginPage = () => {
       callbackURL, 
     });
 
-    console.log({ data, error });
-
     if (error) {
       toast.error("Login failed! " + error.message);
       return;
     }
 
     if (data) {
-      toast.success("Login successful");
+      console.log("✅ Login successful!");
+      toast.success(`🎉 Welcome back! Let's learn something new.`);
       e.target.reset();
     }
   };
